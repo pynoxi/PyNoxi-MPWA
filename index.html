@@ -1,0 +1,1353 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        <!-- SEO Meta Tags -->
+        <meta name="description" content="Complete installation guide for PyNoxi MPWA Notification module for WHMCS. Learn how to integrate WhatsApp notifications with your WHMCS system step by step.">
+        <meta name="keywords" content="PyNoxi MPWA, WHMCS WhatsApp, WhatsApp Notifications, WHMCS Addon, Installation Guide, WhatsApp Integration, WHMCS Automation, WhatsApp Business API">
+        <meta name="author" content="PyNoxi">
+        <meta name="robots" content="index, follow">
+        <link rel="canonical" href="/installation-guide">
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://pynoxi.com">
+        <meta property="og:title" content="PyNoxi MPWA Notification - Installation Guide | WHMCS WhatsApp Integration">
+        <meta property="og:description" content="Complete step-by-step installation guide for PyNoxi MPWA Notification module for WHMCS. Automate WhatsApp notifications effortlessly.">
+        
+        <title>PyNoxi MPWA Notification - Installation Guide | WHMCS WhatsApp Integration</title>
+        
+        <!-- Preconnect for Performance -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://cdn.tailwindcss.com">
+        
+        <!-- Tailwind CSS CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+        
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+            
+            :root {
+                --primary: #6366f1;
+                --primary-dark: #4f46e5;
+                --secondary: #8b5cf6;
+                --success: #10b981;
+                --warning: #f59e0b;
+                --danger: #ef4444;
+                --dark: #0f172a;
+                --gray: #64748b;
+                --light: #f8fafc;
+            }
+            
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            
+            body {
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+                line-height: 1.6;
+                color: #1e293b;
+                overflow-x: hidden;
+            }
+            
+            html {
+                scroll-behavior: smooth;
+            }
+            
+            /* Modern Gradient Background */
+            .hero-gradient {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .hero-gradient::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            }
+            
+            /* Glass Morphism Effect */
+            .glass {
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+            
+            /* Modern Card */
+            .modern-card {
+                background: white;
+                border-radius: 16px;
+                padding: 2rem;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                border: 1px solid #f1f5f9;
+            }
+            
+            .modern-card:hover {
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+                transform: translateY(-4px);
+            }
+            
+            /* Icon Box */
+            .icon-box {
+                width: 56px;
+                height: 56px;
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 24px;
+                flex-shrink: 0;
+            }
+            
+            /* Step Circle */
+            .step-circle {
+                width: 56px;
+                height: 56px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, var(--primary), var(--secondary));
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-weight: 700;
+                font-size: 20px;
+                flex-shrink: 0;
+                box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
+            }
+            
+            /* Code Block */
+            .code-block {
+                background: #0f172a;
+                color: #e2e8f0;
+                border-radius: 12px;
+                padding: 1.25rem;
+                overflow-x: auto;
+                position: relative;
+                font-family: 'Courier New', monospace;
+                font-size: 14px;
+                border: 1px solid #1e293b;
+            }
+            
+            .copy-btn {
+                position: absolute;
+                top: 0.75rem;
+                right: 0.75rem;
+                background: #334155;
+                color: #e2e8f0;
+                padding: 0.375rem 0.875rem;
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 13px;
+                transition: all 0.2s;
+                border: none;
+                font-weight: 500;
+            }
+            
+            .copy-btn:hover {
+                background: #475569;
+            }
+            
+            .copy-btn.copied {
+                background: var(--success);
+            }
+            
+            /* Accordion */
+            .accordion-content {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            
+            .accordion-content.active {
+                max-height: 1000px;
+            }
+            
+            .accordion-btn {
+                transition: all 0.2s;
+            }
+            
+            .accordion-btn:hover {
+                background: #f8fafc !important;
+            }
+            
+            /* Alert Boxes */
+            .alert {
+                padding: 1rem 1.25rem;
+                border-radius: 12px;
+                border-left: 4px solid;
+                margin: 1rem 0;
+            }
+            
+            .alert-info {
+                background: #eff6ff;
+                border-color: var(--primary);
+                color: #1e40af;
+            }
+            
+            .alert-success {
+                background: #ecfdf5;
+                border-color: var(--success);
+                color: #065f46;
+            }
+            
+            .alert-warning {
+                background: #fffbeb;
+                border-color: var(--warning);
+                color: #92400e;
+            }
+            
+            /* Badge */
+            .badge {
+                display: inline-flex;
+                align-items: center;
+                padding: 0.375rem 0.875rem;
+                border-radius: 9999px;
+                font-size: 13px;
+                font-weight: 600;
+                line-height: 1;
+            }
+            
+            /* Button Styles */
+            .btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0.75rem 1.5rem;
+                border-radius: 10px;
+                font-weight: 600;
+                font-size: 15px;
+                transition: all 0.2s;
+                border: none;
+                cursor: pointer;
+                text-decoration: none;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            
+            .btn-primary {
+                background: linear-gradient(135deg, #6366f1, #8b5cf6);
+                color: white;
+                box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+            }
+            
+            .btn-primary:hover {
+                box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+                transform: translateY(-2px);
+                background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            }
+            
+            .btn-success {
+                background: #25D366;
+                color: white;
+                box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            }
+            
+            .btn-success:hover {
+                background: #128C7E;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+            }
+            
+            /* Link Styles */
+            a {
+                color: var(--primary);
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+            
+            a:hover {
+                color: var(--primary-dark);
+            }
+            
+            /* Section Spacing */
+            .section {
+                padding: 4rem 0;
+            }
+            
+            /* Scroll Top Button */
+            .scroll-top {
+                position: fixed;
+                bottom: 2rem;
+                right: 2rem;
+                width: 52px;
+                height: 52px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, var(--primary), var(--secondary));
+                color: white;
+                display: none;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+                transition: all 0.3s;
+                border: none;
+                z-index: 999;
+            }
+            
+            .scroll-top:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 15px 30px rgba(99, 102, 241, 0.4);
+            }
+            
+            .scroll-top.show {
+                display: flex;
+            }
+            
+            /* Animations */
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(40px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            .fade-in-up {
+                animation: fadeInUp 0.6s ease-out forwards;
+                opacity: 0;
+            }
+            
+            /* Responsive Typography */
+            h1 {
+                font-size: clamp(2rem, 5vw, 3.5rem);
+                font-weight: 800;
+                line-height: 1.2;
+            }
+            
+            h2 {
+                font-size: clamp(1.75rem, 4vw, 2.5rem);
+                font-weight: 700;
+                line-height: 1.3;
+            }
+            
+            h3 {
+                font-size: clamp(1.25rem, 3vw, 1.5rem);
+                font-weight: 600;
+                line-height: 1.4;
+            }
+            
+            /* Container */
+            .container-custom {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 1.5rem;
+            }
+            
+            @media (max-width: 768px) {
+                .container-custom {
+                    padding: 0 1rem;
+                }
+                
+                .modern-card {
+                    padding: 1.5rem;
+                }
+                
+                .section {
+                    padding: 2.5rem 0;
+                }
+            }
+            
+            /* Loading State */
+            body {
+                opacity: 0;
+                transition: opacity 0.5s ease;
+            }
+            
+            body.loaded {
+                opacity: 1;
+            }
+            
+            /* Feature Icons */
+            .feature-icon {
+                width: 48px;
+                height: 48px;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 20px;
+                margin-bottom: 1rem;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <!-- Modern Header -->
+    <header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 md:py-5 sticky top-0 z-50 shadow-lg">
+        <div class="container-custom">
+            <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-2 md:gap-3">
+                    <div class="w-10 h-10 md:w-14 md:h-14 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center text-xl md:text-3xl flex-shrink-0">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div class="text-left">
+                        <h1 class="text-lg md:text-3xl font-black tracking-tight leading-tight">PyNoxi MPWA</h1>
+                        <p class="text-white/95 font-medium text-xs md:text-base leading-tight">Installation Guide</p>
+                    </div>
+                </div>
+                <div class="badge bg-white/20 backdrop-blur-sm text-white border border-white/30 text-xs md:text-sm flex-shrink-0">
+                    <i class="fas fa-check-circle mr-1"></i> <span class="hidden sm:inline">Version</span> 1.0
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            
+            <!-- Hero Section -->
+            <section class="hero-gradient text-white section">
+                <div class="container-custom relative z-10">
+                    <div class="max-w-4xl mx-auto text-center fade-in-up">
+                        <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+                            <i class="fas fa-rocket"></i>
+                            <span class="font-semibold">Quick & Easy Setup</span>
+                        </div>
+                        <h2 class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
+                            Welcome to PyNoxi MPWA! 🎉
+                        </h2>
+                        <p class="text-xl md:text-2xl text-white/90 mb-8 font-light leading-relaxed">
+                            Automate WhatsApp notifications for your WHMCS system in just 5 minutes
+                        </p>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <a href="#installation" class="btn bg-white text-indigo-600 hover:bg-gray-50">
+                                <i class="fas fa-arrow-down mr-2"></i>Start Installation
+                            </a>
+                            <a href="https://wa.pynoxi.com" target="_blank" class="btn bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 hover:bg-white/20">
+                                <i class="fas fa-key mr-2"></i>Get API Key
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Feature Highlights -->
+                    <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mt-16">
+                        <div class="text-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
+                            <div class="feature-icon bg-white/20 mx-auto">
+                                <i class="fas fa-bolt text-yellow-300"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2">5-Min Setup</h3>
+                            <p class="text-white/80 text-sm">Quick installation with no technical skills required</p>
+                        </div>
+                        <div class="text-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
+                            <div class="feature-icon bg-white/20 mx-auto">
+                                <i class="fas fa-cogs text-blue-300"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2">Full Automation</h3>
+                            <p class="text-white/80 text-sm">Set it once and let it handle all notifications</p>
+                        </div>
+                        <div class="text-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
+                            <div class="feature-icon bg-white/20 mx-auto">
+                                <i class="fas fa-headset text-green-300"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2">24/7 Support</h3>
+                            <p class="text-white/80 text-sm">Our team is always here to help you succeed</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Links Section -->
+            <section class="section bg-gray-50">
+                <div class="container-custom">
+                    <h2 class="text-center mb-12 text-gray-900">Quick Access</h2>
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                        <a href="https://pynoxi.com/dash/store/whmcs-modules" target="_blank" class="modern-card text-center group">
+                            <div class="icon-box bg-indigo-100 text-indigo-600 mx-auto mb-4 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-900 mb-2">Buy Module</h3>
+                            <p class="text-gray-600 text-sm">Open-Source code</p>
+                        </a>
+                        <a href="https://forum.pynoxi.com" target="_blank" class="modern-card text-center group">
+                            <div class="icon-box bg-blue-100 text-blue-600 mx-auto mb-4 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-900 mb-2">Community</h3>
+                            <p class="text-gray-600 text-sm">Join the discussion</p>
+                        </a>
+                        <a href="https://wa.pynoxi.com" target="_blank" class="modern-card text-center group">
+                            <div class="icon-box bg-green-100 text-green-600 mx-auto mb-4 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-key"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-900 mb-2">Get API Key</h3>
+                            <p class="text-gray-600 text-sm">wa.pynoxi.com</p>
+                        </a>
+                        <a href="https://pynoxi.com/hosting" target="_blank" class="modern-card text-center group">
+                            <div class="icon-box bg-orange-100 text-orange-600 mx-auto mb-4 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-900 mb-2">Best Hosting</h3>
+                            <p class="text-gray-600 text-sm">Recommended provider</p>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MPWA Server Options -->
+            <section class="section bg-white">
+                <div class="container-custom">
+                    
+                    <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                        <!-- Option 1: Get API Key -->
+                        <div class="modern-card border-2 border-green-500">
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="flex items-center gap-4">
+                                    <div class="icon-box bg-green-100 text-green-600">
+                                        <i class="fas fa-cloud"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-2xl font-bold text-gray-900">Managed Service</h3>
+                                        <span class="badge bg-green-100 text-green-700">Recommended</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-6 leading-relaxed">
+                                Perfect for businesses that want instant access without managing server or backend.
+                            </p>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-check-circle text-green-500 text-lg"></i>
+                                    <span class="text-gray-700">Instant activation</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-check-circle text-green-500 text-lg"></i>
+                                    <span class="text-gray-700">No server management</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-check-circle text-green-500 text-lg"></i>
+                                    <span class="text-gray-700">99.9% uptime guarantee</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-check-circle text-green-500 text-lg"></i>
+                                    <span class="text-gray-700">24/7 support included</span>
+                                </li>
+                            </ul>
+                            <a href="https://wa.pynoxi.com" target="_blank" class="btn btn-success w-full">
+                                Get API Key Now <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+
+                        <!-- Option 2: Own Server -->
+                        <div class="modern-card border-2 border-indigo-500">
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="flex items-center gap-4">
+                                    <div class="icon-box bg-indigo-100 text-indigo-600">
+                                        <i class="fas fa-cogs"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-2xl font-bold text-gray-900">Own Server</h3>
+                                        <span class="badge bg-indigo-100 text-indigo-700">Advanced</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-6 leading-relaxed">
+                                Ideal for businesses wanting complete control and zero monthly fees.
+                            </p>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-check-circle text-indigo-500 text-lg"></i>
+                                    <span class="text-gray-700">Full server control</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-check-circle text-indigo-500 text-lg"></i>
+                                    <span class="text-gray-700">Unlimited Messages</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-check-circle text-indigo-500 text-lg"></i>
+                                    <span class="text-gray-700">cPanel compatible</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-check-circle text-indigo-500 text-lg"></i>
+                                    <span class="text-gray-700">Clean Code</span>
+                                </li>
+                            </ul>
+                            <a href="https://wa.me/message/CLGKEHMKQA4TG1" target="_blank" class="btn btn-success w-full">
+                                <i class="fab fa-whatsapp mr-2"></i>Contact on WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Requirements -->
+            <section class="section bg-gray-50">
+                <div class="container-custom">
+                    <div class="text-center mb-12">
+                        <p class="text-gray-600 text-lg">Make sure your server meets these requirements</p>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                        <div class="modern-card">
+                            <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                                <div class="icon-box bg-indigo-100 text-indigo-600 w-10 h-10">
+                                    <i class="fas fa-server text-sm"></i>
+                                </div>
+                                Server Requirements
+                            </h3>
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-green-500 text-lg mt-0.5"></i>
+                                    <span class="text-gray-700">WHMCS 8.13.0 or higher</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-green-500 text-lg mt-0.5"></i>
+                                    <span class="text-gray-700">PHP 7.4+ (PHP 8.1+ recommended)</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-green-500 text-lg mt-0.5"></i>
+                                    <span class="text-gray-700">MySQL 5.6 or higher</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-green-500 text-lg mt-0.5"></i>
+                                    <span class="text-gray-700">cURL extension enabled</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="modern-card">
+                            <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                                <div class="icon-box bg-blue-100 text-blue-600 w-10 h-10">
+                                    <i class="fas fa-box text-sm"></i>
+                                </div>
+                                What You'll Need
+                            </h3>
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-file-zipper text-blue-500 text-lg mt-0.5"></i>
+                                    <span class="text-gray-700">PyNoxi MPWA module ZIP file</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-key text-blue-500 text-lg mt-0.5"></i>
+                                    <span class="text-gray-700">MPWA API Key</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-user-shield text-blue-500 text-lg mt-0.5"></i>
+                                    <span class="text-gray-700">WHMCS Admin Access</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-folder text-blue-500 text-lg mt-0.5"></i>
+                                    <span class="text-gray-700">File Manager or FTP access</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Installation Steps -->
+            <section id="installation" class="section bg-white">
+                <div class="container-custom">
+                    <div class="text-center mb-8 md:mb-12">
+                        <h2 class="text-gray-900 mb-3 md:mb-4"><i class="fas fa-rocket mr-2 md:mr-3"></i>Installation Guide</h2>
+                    </div>
+
+
+                    <div class="max-w-4xl mx-auto space-y-6 md:space-y-8">
+
+                    <!-- Step 1 -->
+                    <div class="modern-card fade-in-up">
+                        <div class="mb-4 md:mb-5">
+                            <div class="inline-flex items-center gap-2 bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs font-semibold mb-3">
+                                STEP 1
+                            </div>
+                            <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-2">Upload Module Files</h3>
+                            <p class="text-gray-600 text-sm md:text-base leading-relaxed">
+                                Upload the PyNoxi MPWA module to your WHMCS installation directory.
+                            </p>
+                        </div>
+                        
+                        <div class="space-y-3 md:space-y-4">
+                            <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                                <h4 class="font-semibold text-gray-900 mb-2 flex items-center gap-2 text-sm md:text-base">
+                                    <i class="fas fa-folder-open text-indigo-600"></i>
+                                    File Manager Method
+                                </h4>
+                                <ul class="space-y-1.5 text-xs md:text-sm text-gray-700 ml-6">
+                                    <li class="flex items-start gap-2">
+                                        <span class="text-indigo-600 mt-0.5">•</span>
+                                        <span>Access hosting control panel</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span class="text-indigo-600 mt-0.5">•</span>
+                                        <span>Open File Manager → Navigate to WHMCS directory</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span class="text-indigo-600 mt-0.5">•</span>
+                                        <span>Go to <code class="px-2 py-0.5 bg-gray-200 rounded text-xs">modules/addons/</code></span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span class="text-indigo-600 mt-0.5">•</span>
+                                        <span>Upload and extract ZIP file</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                                <h4 class="font-semibold text-gray-900 mb-2 flex items-center gap-2 text-sm md:text-base">
+                                    <i class="fas fa-upload text-blue-600"></i>
+                                    FTP/SFTP Method
+                                </h4>
+                                <ul class="space-y-1.5 text-xs md:text-sm text-gray-700 ml-6">
+                                    <li class="flex items-start gap-2">
+                                        <span class="text-blue-600 mt-0.5">•</span>
+                                        <span>Extract ZIP on your computer</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span class="text-blue-600 mt-0.5">•</span>
+                                        <span>Connect via FTP client</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span class="text-blue-600 mt-0.5">•</span>
+                                        <span>Navigate to <code class="px-2 py-0.5 bg-gray-200 rounded text-xs">modules/addons/</code></span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span class="text-blue-600 mt-0.5">•</span>
+                                        <span>Upload the folder</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning mt-4">
+                            <i class="fas fa-exclamation-triangle mr-2"></i>
+                            <strong>Important:</strong> Final path should be <code class="px-2 py-1 bg-yellow-100 rounded text-xs md:text-sm">modules/addons/pynoxi_mpwa/</code>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="modern-card fade-in-up">
+                        <div class="mb-4 md:mb-5">
+                            <div class="inline-flex items-center gap-2 bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold mb-3">
+                                STEP 2
+                            </div>
+                            <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-2">Activate Module</h3>
+                            <p class="text-gray-600 text-sm md:text-base leading-relaxed">
+                                Enable PyNoxi MPWA in your WHMCS admin panel.
+                            </p>
+                        </div>
+                        
+                        <ul class="space-y-2 text-xs md:text-sm text-gray-700 mb-4">
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-600 mt-0.5">•</span>
+                                <span>Login to <strong>WHMCS Admin Area</strong></span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-600 mt-0.5">•</span>
+                                <span>Go to <strong>Configuration → System Settings → Addon Modules</strong></span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-600 mt-0.5">•</span>
+                                <span>Find <strong>"PyNoxi MPWA Notification"</strong></span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-600 mt-0.5">•</span>
+                                <span>Click <strong>Activate</strong> button</span>
+                            </li>
+                        </ul>
+
+                        <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                            <p class="flex items-start gap-2 text-blue-900 text-xs md:text-sm">
+                                <i class="fas fa-lightbulb text-base md:text-lg mt-0.5"></i>
+                                <span><strong>Pro Tip:</strong> If module doesn't appear, verify file permissions (644 for files, 755 for directories)</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="modern-card fade-in-up">
+                        <div class="mb-4 md:mb-5">
+                            <div class="inline-flex items-center gap-2 bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-semibold mb-3">
+                                STEP 3
+                            </div>
+                            <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-2">Configure Access</h3>
+                            <p class="text-gray-600 text-sm md:text-base leading-relaxed">
+                                Set administrator access permissions.
+                            </p>
+                        </div>
+                        
+                        <ul class="space-y-2 text-xs md:text-sm text-gray-700 mb-4">
+                            <li class="flex items-start gap-2">
+                                <span class="text-purple-600 mt-0.5">•</span>
+                                <span>Locate <strong>Access Control</strong> dropdown</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-purple-600 mt-0.5">•</span>
+                                <span>Select <strong>Full Administrator</strong></span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-purple-600 mt-0.5">•</span>
+                                <span>Click <strong>Save Changes</strong></span>
+                            </li>
+                        </ul>
+
+                        <div class="alert alert-success">
+                            <i class="fas fa-shield-alt mr-2"></i>
+                            This ensures only admins can configure WhatsApp notifications for security.
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="modern-card fade-in-up">
+                        <div class="mb-4 md:mb-5">
+                            <div class="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold mb-3">
+                                STEP 4
+                            </div>
+                            <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-2">Configure Settings</h3>
+                            <p class="text-gray-600 text-sm md:text-base leading-relaxed mb-4">
+                                Set up your MPWA API credentials and preferences.
+                            </p>
+                            
+                            <ul class="space-y-2 text-xs md:text-sm text-gray-700 mb-5">
+                                <li class="flex items-start gap-2">
+                                    <span class="text-blue-600 mt-0.5">•</span>
+                                    <span>Navigate to <strong>Addons → PyNoxi MPWA Notification</strong></span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-blue-600 mt-0.5">•</span>
+                                    <span>Go to <strong>Settings</strong> tab</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="text-blue-600 mt-0.5">•</span>
+                                    <span>Configure the following:</span>
+                                </li>
+                            </ul>
+
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                                <h4 class="font-semibold text-gray-900 mb-2 flex items-center gap-2 text-sm md:text-base">
+                                    <i class="fas fa-link text-indigo-600"></i>
+                                    API URL
+                                </h4>
+                                <div class="code-block mb-2">
+                                    <button class="copy-btn" onclick="copyToClipboard(this, 'https://wa.pynoxi.com')">
+                                        <i class="fas fa-copy mr-1"></i>Copy
+                                    </button>
+                                    <code>https://wa.pynoxi.com</code>
+                                </div>
+                                <p class="text-xs md:text-sm text-gray-600">
+                                    Use our managed service URL or your own MPWA server URL
+                                </p>
+                            </div>
+
+                            <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                                <h4 class="font-semibold text-gray-900 mb-2 flex items-center gap-2 text-sm md:text-base">
+                                    <i class="fas fa-key text-green-600"></i>
+                                    API Key
+                                </h4>
+                                <input type="text" placeholder="Enter your API key" class="w-full p-2 md:p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-2 text-sm" readonly>
+                                <p class="text-xs md:text-sm text-gray-600">
+                                    Get from <a href="https://wa.pynoxi.com" target="_blank" class="text-green-600 hover:underline font-semibold">wa.pynoxi.com</a>
+                                </p>
+                            </div>
+
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                                    <h4 class="font-semibold text-gray-900 mb-2 flex items-center gap-2 text-sm md:text-base">
+                                        <i class="fas fa-phone text-blue-600"></i>
+                                        Sender Number
+                                    </h4>
+                                    <input type="text" placeholder="1234567890" class="w-full p-2 md:p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-2 text-sm" readonly>
+                                    <p class="text-xs text-gray-600">Format: Country code + number (no spaces)</p>
+                                </div>
+
+                                <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                                    <h4 class="font-semibold text-gray-900 mb-2 flex items-center gap-2 text-sm md:text-base">
+                                        <i class="fas fa-user-tie text-orange-600"></i>
+                                        Admin Number
+                                    </h4>
+                                    <input type="text" placeholder="9876543210" class="w-full p-2 md:p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 mb-2 text-sm" readonly>
+                                    <p class="text-xs text-gray-600">For admin notifications</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary mt-6">
+                            <i class="fas fa-save mr-2"></i>Save Configuration
+                        </button>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="modern-card fade-in-up">
+                        <div class="mb-4 md:mb-5">
+                            <div class="inline-flex items-center gap-2 bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-xs font-semibold mb-3">
+                                STEP 5
+                            </div>
+                            <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-2">Customize Templates</h3>
+                            <p class="text-gray-600 text-sm md:text-base leading-relaxed">
+                                Configure notification templates for different events.
+                            </p>
+                        </div>
+                        
+                        <ul class="space-y-2 text-xs md:text-sm text-gray-700 mb-5">
+                            <li class="flex items-start gap-2">
+                                <span class="text-pink-600 mt-0.5">•</span>
+                                <span>Go to <strong>Client Templates</strong> or <strong>Admin Templates</strong> tab</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-pink-600 mt-0.5">•</span>
+                                <span>Enable/disable templates as needed</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-pink-600 mt-0.5">•</span>
+                                <span>Customize messages with variables</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-pink-600 mt-0.5">•</span>
+                                <span>Save your changes</span>
+                            </li>
+                        </ul>
+
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-3 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-file-invoice text-indigo-600 text-sm"></i>
+                                <span class="text-xs md:text-sm text-gray-700">Invoices</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-ticket text-blue-600 text-sm"></i>
+                                <span class="text-xs md:text-sm text-gray-700">Tickets</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-cart-shopping text-green-600 text-sm"></i>
+                                <span class="text-xs md:text-sm text-gray-700">Orders</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-globe text-purple-600 text-sm"></i>
+                                <span class="text-xs md:text-sm text-gray-700">Domains</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-bell text-orange-600 text-sm"></i>
+                                <span class="text-xs md:text-sm text-gray-700">Reminders</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-plus-circle text-gray-600 text-sm"></i>
+                                <span class="text-xs md:text-sm text-gray-700">More...</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 6 -->
+                    <div class="modern-card fade-in-up">
+                        <div class="mb-4 md:mb-5">
+                            <div class="inline-flex items-center gap-2 bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-semibold mb-3">
+                                STEP 6
+                            </div>
+                            <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-2">Test & Launch</h3>
+                            <p class="text-gray-600 text-sm md:text-base leading-relaxed">
+                                Verify everything works before going live.
+                            </p>
+                        </div>
+                        
+                        <ul class="space-y-2 text-xs md:text-sm text-gray-700 mb-5">
+                            <li class="flex items-start gap-2">
+                                <span class="text-emerald-600 mt-0.5">•</span>
+                                <span>Navigate to <strong>Send Message</strong> tab</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-emerald-600 mt-0.5">•</span>
+                                <span>Select a test recipient</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-emerald-600 mt-0.5">•</span>
+                                <span>Send a test WhatsApp message</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-emerald-600 mt-0.5">•</span>
+                                <span>Verify message delivery</span>
+                            </li>
+                        </ul>
+
+                        <div class="alert alert-success">
+                            <div class="flex items-start gap-2 md:gap-3">
+                                <i class="fas fa-check-circle text-xl md:text-2xl"></i>
+                                <div>
+                                    <p class="font-semibold mb-1 text-sm md:text-base">Congratulations!</p>
+                                    <p class="text-xs md:text-sm">Your PyNoxi MPWA setup is complete and ready to automate WhatsApp notifications!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="section bg-gray-50">
+                <div class="container-custom">
+                    <div class="text-center mb-12">
+                        <h2 class="text-gray-900 mb-4"><i class="fas fa-question-circle mr-3"></i>Frequently Asked Questions</h2>
+                        <p class="text-gray-600 text-lg">Everything you need to know</p>
+                    </div>
+
+                    <div class="max-w-4xl mx-auto space-y-4">
+                        <div class="modern-card accordion-item">
+                            <button class="accordion-btn w-full text-left flex items-center justify-between gap-4" onclick="toggleAccordion(this)">
+                                <span class="font-semibold text-gray-900">Do I need a WhatsApp Business account?</span>
+                                <i class="fas fa-chevron-down text-indigo-600 text-lg transition-transform"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="pt-4 text-gray-600 leading-relaxed">
+                                    Yes, you need a WhatsApp Business number. You can use our managed MPWA service which handles everything, or set up your own MPWA server with your WhatsApp Business account.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modern-card accordion-item">
+                            <button class="accordion-btn w-full text-left flex items-center justify-between gap-4" onclick="toggleAccordion(this)">
+                                <span class="font-semibold text-gray-900">What if I don't have my own MPWA server?</span>
+                                <i class="fas fa-chevron-down text-indigo-600 text-lg transition-transform"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="pt-4 text-gray-600 leading-relaxed">
+                                    No problem! Get instant API access from <a href="https://wa.pynoxi.com" target="_blank" class="text-indigo-600 hover:underline font-semibold">wa.pynoxi.com</a>. It's ready to use immediately with no server management required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modern-card accordion-item">
+                            <button class="accordion-btn w-full text-left flex items-center justify-between gap-4" onclick="toggleAccordion(this)">
+                                <span class="font-semibold text-gray-900">Can I customize notification messages?</span>
+                                <i class="fas fa-chevron-down text-indigo-600 text-lg transition-transform"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="pt-4 text-gray-600 leading-relaxed">
+                                    Absolutely! Customize all templates using variables like customer name, invoice number, amount, etc. Support for WhatsApp formatting (*bold*, _italic_) included.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modern-card accordion-item">
+                            <button class="accordion-btn w-full text-left flex items-center justify-between gap-4" onclick="toggleAccordion(this)">
+                                <span class="font-semibold text-gray-900">Are there message sending limits?</span>
+                                <i class="fas fa-chevron-down text-indigo-600 text-lg transition-transform"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="pt-4 text-gray-600 leading-relaxed">
+                                    Limits depend on your service plan. Our managed service offers various plans for different volumes. Contact us for details about your specific needs.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modern-card accordion-item">
+                            <button class="accordion-btn w-full text-left flex items-center justify-between gap-4" onclick="toggleAccordion(this)">
+                                <span class="font-semibold text-gray-900">How do I set up my own MPWA server?</span>
+                                <i class="fas fa-chevron-down text-indigo-600 text-lg transition-transform"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="pt-4 text-gray-600 leading-relaxed">
+                                    Setting up your own server requires specific configuration. Contact our technical team on WhatsApp and we'll assist with the complete setup on your cPanel hosting.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modern-card accordion-item">
+                            <button class="accordion-btn w-full text-left flex items-center justify-between gap-4" onclick="toggleAccordion(this)">
+                                <span class="font-semibold text-gray-900">What if a message fails to send?</span>
+                                <i class="fas fa-chevron-down text-indigo-600 text-lg transition-transform"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="pt-4 text-gray-600 leading-relaxed">
+                                    Comprehensive error logging is included. Failed messages appear in the Logs tab with detailed error information for quick troubleshooting.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Troubleshooting -->
+            <section class="section bg-white">
+                <div class="container-custom">
+                    <div class="text-center mb-12">
+                        <p class="text-gray-600 text-lg">Quick solutions to common issues</p>
+                    </div>
+
+                    <div class="max-w-4xl mx-auto space-y-8">
+                        <div class="modern-card">
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">Module doesn't appear in list</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-circle text-indigo-600 text-xs mt-2"></i>
+                                    <span class="text-gray-700">Verify folder location: <code class="px-2 py-1 bg-gray-100 rounded text-sm">modules/addons/pynoxi_mpwa/</code></span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-circle text-indigo-600 text-xs mt-2"></i>
+                                    <span class="text-gray-700">Check permissions (644 files, 755 directories)</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-circle text-indigo-600 text-xs mt-2"></i>
+                                    <span class="text-gray-700">Ensure all files are present</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="modern-card">
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">Messages not being sent</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-circle text-indigo-600 text-xs mt-2"></i>
+                                    <span class="text-gray-700">Verify API URL and API Key correctness</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-circle text-indigo-600 text-xs mt-2"></i>
+                                    <span class="text-gray-700">Check sender number formatting (no spaces/symbols)</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-circle text-indigo-600 text-xs mt-2"></i>
+                                    <span class="text-gray-700">Ensure templates are activated</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-circle text-indigo-600 text-xs mt-2"></i>
+                                    <span class="text-gray-700">Review Logs tab for error details</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="modern-card">
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">API connection errors</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-circle text-indigo-600 text-xs mt-2"></i>
+                                    <span class="text-gray-700">Verify cURL extension is enabled</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-circle text-indigo-600 text-xs mt-2"></i>
+                                    <span class="text-gray-700">Check HTTPS outbound connections</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fas fa-circle text-indigo-600 text-xs mt-2"></i>
+                                    <span class="text-gray-700">Confirm firewall isn't blocking requests</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="max-w-4xl mx-auto mt-12">
+                        <div class="modern-card bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-200">
+                            <div class="text-center">
+                                <div class="icon-box bg-indigo-600 text-white mx-auto mb-4">
+                                    <i class="fas fa-life-ring"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-gray-900 mb-3">Need More Help?</h3>
+                                <p class="text-gray-600 mb-6">Our community is available 24/7</p>
+                                <div class="flex flex-wrap justify-center gap-4">
+                                    <a href="https://forum.pynoxi.com" target="_blank" class="btn bg-indigo-600 text-white">
+                                        <i class="fas fa-comments mr-2"></i>Visit Forum
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="section hero-gradient text-white">
+                <div class="container-custom relative z-10">
+                    <div class="max-w-4xl mx-auto text-center">
+                        <h2 class="text-4xl md:text-5xl font-black mb-6">Ready to Get Started?</h2>
+                        <p class="text-xl text-white/90 mb-8">Join thousands of WHMCS users automating their customer communications</p>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <a href="https://pynoxi.com/dash/store/whmcs-modules" target="_blank" class="btn bg-white text-indigo-600 hover:bg-gray-50 text-lg">
+                                <i class="fas fa-shopping-cart mr-2"></i>Buy Module Now
+                            </a>
+                            <a href="https://wa.pynoxi.com" target="_blank" class="btn btn-success text-lg">
+                                <i class="fas fa-key mr-2"></i>Get API Key
+                            </a>
+                            <a href="https://pynoxi.com/hosting" target="_blank" class="btn bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 text-lg">
+                                <i class="fas fa-server mr-2"></i>Best Hosting
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-white py-12">
+            <div class="container-custom">
+                <div class="grid md:grid-cols-4 gap-8 mb-8">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="icon-box bg-white/10 w-12 h-12">
+                                <i class="fab fa-whatsapp text-xl"></i>
+                            </div>
+                            <h3 class="font-bold text-xl">PyNoxi MPWA</h3>
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Automate WhatsApp notifications for your WHMCS system effortlessly.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-4">Quick Links</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="https://pynoxi.com" target="_blank" class="text-gray-400 hover:text-white transition">Homepage</a></li>
+                            <li><a href="https://forum.pynoxi.com" target="_blank" class="text-gray-400 hover:text-white transition">Community Forum</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-4">Services</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="https://wa.pynoxi.com" target="_blank" class="text-gray-400 hover:text-white transition">Get API Key</a></li>
+                            <li><a href="https://pynoxi.com/" target="_blank" class="text-gray-400 hover:text-white transition">Web Hosting</a></li>
+                            <li><a href="https://wa.me/message/CLGKEHMKQA4TG1" class="text-gray-400 hover:text-white transition">Custom MPWA Server</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-4">Contact</h4>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-center gap-2">
+                                <i class="fab fa-whatsapp text-green-400"></i>
+                                <a href="https://wa.me/your-number" target="_blank" class="text-gray-400 hover:text-white transition">WhatsApp Support</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="border-t border-gray-800 pt-8 text-center">
+                    <p class="text-gray-400 text-sm">
+                        &copy; 2025 PyNoxi Web Solutions. All rights reserved. | Selling or sharing this module is strictly prohibited.
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Scroll to Top Button -->
+        <button class="scroll-top" id="scrollTopBtn" onclick="scrollToTop()">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+
+        <script>
+            // Copy to Clipboard
+            function copyToClipboard(button, text) {
+                navigator.clipboard.writeText(text).then(() => {
+                    const originalHTML = button.innerHTML;
+                    button.innerHTML = '<i class="fas fa-check mr-1"></i>Copied!';
+                    button.classList.add('copied');
+                    
+                    setTimeout(() => {
+                        button.innerHTML = originalHTML;
+                        button.classList.remove('copied');
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy:', err);
+                });
+            }
+
+            // Accordion Toggle
+            function toggleAccordion(button) {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('i');
+                const isActive = content.classList.contains('active');
+                
+                // Close all accordions
+                document.querySelectorAll('.accordion-content').forEach(item => {
+                    item.classList.remove('active');
+                });
+                document.querySelectorAll('.accordion-btn i:last-child').forEach(item => {
+                    item.style.transform = 'rotate(0deg)';
+                });
+                
+                // Open clicked accordion
+                if (!isActive) {
+                    content.classList.add('active');
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            }
+
+            // Scroll to Top
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+
+            // Show/Hide Scroll Top Button
+            window.addEventListener('scroll', () => {
+                const scrollTopBtn = document.getElementById('scrollTopBtn');
+                if (window.pageYOffset > 300) {
+                    scrollTopBtn.classList.add('show');
+                } else {
+                    scrollTopBtn.classList.remove('show');
+                }
+            });
+
+            // Smooth Scroll for Anchor Links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#') {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            const offsetTop = target.offsetTop - 100;
+                            window.scrollTo({
+                                top: offsetTop,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Intersection Observer for Fade-in Animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe sections for animation
+            document.addEventListener('DOMContentLoaded', () => {
+                document.querySelectorAll('.fade-in-up').forEach(section => {
+                    observer.observe(section);
+                });
+            });
+
+            // Page Load Animation
+            window.addEventListener('load', () => {
+                document.body.classList.add('loaded');
+            });
+
+            // Mobile Menu (if needed in future)
+            // Preload critical resources
+            const preloadLinks = [
+                'https://cdn.tailwindcss.com',
+                'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css'
+            ];
+
+            preloadLinks.forEach(link => {
+                const linkEl = document.createElement('link');
+                linkEl.rel = 'preload';
+                linkEl.as = 'style';
+                linkEl.href = link;
+                document.head.appendChild(linkEl);
+            });
+        </script>
+
+    </body>
+    </html>
